@@ -1,10 +1,26 @@
 {
   "docs": {
-    "Getting Started": [
+    "Quick Start": [
       "getting-started",
-      "configuration"
+      "swagger-documentation"
     ],
-    "First Category": ["doc2"],
+    "Usage": [
+      "configuration",
+      "creating-endpoints",
+      "associations",
+      "route-customization",
+      "querying",
+      "duplicate-fields",
+      "validation",
+      "middleware",
+      "authorization",
+      "audit-logs",
+      "policies",
+      "mongoose-wrapper-methods",
+      "soft-delete",
+      "metadata",
+      "misc"
+    ],
     "Second Category": ["doc3"]
   },
   "docs-other": {

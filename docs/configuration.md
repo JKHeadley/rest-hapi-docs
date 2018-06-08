@@ -24,8 +24,8 @@ config.appTitle = 'rest-hapi API'
  */
 config.version = '1.0.0'
 ```
-## absoluteModelPath
 
+## absoluteModelPath
 ```javascript
 /**
  * Flag signifying whether the absolute path to the models directory is provided
@@ -34,30 +34,40 @@ config.version = '1.0.0'
  */
 config.absoluteModelPath = false
 ```
+
+## modelPath
+```javascript
 /**
  * Path to the models directory
  * default: 'models'
  * @type {string}
  */
 config.modelPath = 'models'
-
-
-```javascript
-
 ```
+
+## absoluteApiPath
+```javascript
 /**
  * Flag signifying whether the absolute path to the api directory is provided
  * @type {boolean}
  */
 config.absoluteApiPath = false
+```
 
+## apiPath
+```javascript
 /**
  * Path to the directory for additional endpoints
  * default: 'api'
  * @type {string}
  */
 config.apiPath = 'api'
+```
 
+## cors
+### additionalHeaders
+### additionalExposedHeaders
+```javascript
 /**
  * Cors settings for generated endpoints. Can be set to false to disable.
  * @type {{additionalHeaders: string[], additionalExposedHeaders: string[]}}
@@ -66,13 +76,20 @@ config.cors = {
   additionalHeaders: [],
   additionalExposedHeaders: []
 }
+```
 
+## mongo
+### URI
+```javascript
 /**
  * Mongo settings
  * - config.mongo.URI = 'mongodb://localhost/rest_hapi'; (local db, default)
  */
 config.mongo.URI = 'mongodb://localhost/rest_hapi'
+```
 
+## authStrategy
+```javascript
 /**
  * Authentication strategy to be used for all generated endpoints.
  * Set to false for no authentication.
@@ -80,7 +97,10 @@ config.mongo.URI = 'mongodb://localhost/rest_hapi'
  * @type {boolean/string}
  */
 config.authStrategy = false
+```
 
+## embedAssociations
+```javascript
 /**
  * If set to false, MANY_MANY associations (including linking model data) will be saved in their own collection in th db.  This is useful if a single document
  * will be associated with many other documents, which could cause the document size to become very large. For example,
@@ -93,7 +113,15 @@ config.authStrategy = false
  * @type {boolean}
  */
 config.embedAssociations = false
+```
 
+## enableCreatedAt
+## enableUpdatedAt
+## enableDeletedAt
+## enableCreatedBy
+## enableUpdatedBy
+## enableDeletedBy
+```javascript
 /**
  * MetaData options:
  * - createdAt: (default: true) date specifying when the document was created.
@@ -109,14 +137,20 @@ config.enableDeletedAt = true
 config.enableCreatedBy = false
 config.enableUpdatedBy = false
 config.enableDeletedBy = false
+```
 
+## enableWhereQueries
+```javascript
 /**
  * Enables raw $where mongoose queries
  * default: true
  * @type {boolean}
  */
 config.enableWhereQueries = true
+```
 
+## enableDuplicateFields
+```javascript
 /**
  * Enables fields from an associated model to be duplicated. Similar to permanently embedding an associated field within
  * the parent model schema. Useful if a parent model needs to be searchable or sortable by an association's field.
@@ -124,7 +158,10 @@ config.enableWhereQueries = true
  * @type {boolean}
  */
 config.enableDuplicateFields = false
+```
 
+## trackDuplicatedFields
+```javascript
 /**
  * When true, duplicated fields will update whenever the original field is updated.
  * WARNING: This feature can make updates very resource intensive if many documents are duplicating the original field.
@@ -132,21 +169,30 @@ config.enableDuplicateFields = false
  * @type {boolean}
  */
 config.trackDuplicatedFields = false
+```
 
+## enableAuditLog
+```javascript
 /**
  * When enabled, all create, update, associate, and delete events are recorded in an auditLog collection.
  * default: true
  * @type {boolean}
  */
 config.enableAuditLog = true
+```
 
+## auditLogScope
+```javascript
 /**
  * Values added here will be applied to the scope of the auditLog endpoint.
  * default: []
  * @type {Array}
  */
 config.auditLogScope = []
+```
 
+## auditLogTTL
+```javascript
 /**
  * Specifies the TTL (time to live/lifetime/expiration) of auditLog documents. Accepts values in seconds unless specified
  * (Ex: 60 = 60 seconds, '1m' = 1 minute, or '1d' = 1 day)
@@ -155,35 +201,50 @@ config.auditLogScope = []
  * @type {string}
  */
 config.auditLogTTL = null
+```
 
+## enablePolicies
+```javascript
 /**
  * Enables policies via mrhorse (https://github.com/mark-bradshaw/mrhorse).
  * default: false
  * @type {boolean}
  */
 config.enablePolicies = false
+```
 
+## absolutePolicyPath
+```javascript
 /**
  * Flag signifying whether the absolute path to the policies directory is provided.
  * default: false
  * @type {boolean}
  */
 config.absolutePolicyPath = false
+```
 
+## policyPath
+```javascript
 /**
  * Path to the directory for mrhorse policies (https://github.com/mark-bradshaw/mrhorse).
  * default: 'policies'
  * @type {string}
  */
 config.policyPath = 'policies'
+```
 
+## enableDocumentScopes
+```javascript
 /**
  * Enables document level authorization.
  * default: true
  * @type {boolean}
  */
 config.enableDocumentScopes = true
+```
 
+## authorizeDocumentCreator
+```javascript
 /**
  * If true, modifies the root scope of any document to allow access to the document's creator.
  * The scope value added is in the form: "user-{_id}" where "{_id}" is the _id of the user.
@@ -197,42 +258,60 @@ config.enableDocumentScopes = true
  * @type {boolean}
  */
 config.authorizeDocumentCreator = false
+```
 
+## authorizeDocumentCreatorToRead
+```javascript
 /**
  * Same as "authorizeDocumentCreator", but modifies the "readScope" rather than the root scope.
  * default: false
  * @type {boolean}
  */
 config.authorizeDocumentCreatorToRead = false
+```
 
+## authorizeDocumentCreatorToUpdate
+```javascript
 /**
  * Same as "authorizeDocumentCreator", but modifies the "updateScope" rather than the root scope.
  * default: false
  * @type {boolean}
  */
 config.authorizeDocumentCreatorToUpdate = false
+```
 
+## authorizeDocumentCreatorToDelete
+```javascript
 /**
  * Same as "authorizeDocumentCreator", but modifies the "deleteScope" rather than the root scope.
  * default: false
  * @type {boolean}
  */
 config.authorizeDocumentCreatorToDelete = false
+```
 
+## authorizeDocumentCreatorToAssociate
+```javascript
 /**
  * Same as "authorizeDocumentCreator", but modifies the "associateScope" rather than the root scope.
  * default: false
  * @type {boolean}
  */
 config.authorizeDocumentCreatorToAssociate = false
+```
 
+## userIdKey
+```javascript
 /**
  * This is the path/key to the user _id stored in your request.auth.credentials object.
  * default: "user._id"
  * @type {string}
  */
 config.userIdKey = 'user._id'
+```
 
+## enableDocumentScopeFail
+```javascript
 /**
  * Determines what action takes place when one or more document scope checks fail for requests dealing with multiple
  * documents (Ex: deleteMany or list). Options are:
@@ -242,7 +321,10 @@ config.userIdKey = 'user._id'
  * @type {boolean}
  */
 config.enableDocumentScopeFail = false
+```
 
+## enableTextSearch
+```javascript
 /**
  * Flag specifying whether to text index all string fields for all models to enable text search.
  * WARNING: enabling this adds overhead to add inserts and updates, as well as added storage requirements.
@@ -250,7 +332,11 @@ config.enableDocumentScopeFail = false
  * @type {boolean}
  */
 config.enableTextSearch = false
+```
 
+## enableSoftDelete
+## filterDeletedEmbeds
+```javascript
 /**
  * Soft delete options
  * - enableSoftDelete: adds "isDeleted" property to each model. Delete endpoints set "isDeleted" to true
@@ -261,7 +347,13 @@ config.enableTextSearch = false
  */
 config.enableSoftDelete = false
 config.filterDeletedEmbeds = false
+```
 
+
+## enableQueryValidation
+## enablePayloadValidation
+## enableResponseValidation
+```javascript
 /**
  * Validation options:
  * default: true
@@ -270,7 +362,10 @@ config.filterDeletedEmbeds = false
 config.enableQueryValidation = true
 config.enablePayloadValidation = true
 config.enableResponseValidation = true
+```
 
+## enableMongooseRunValidators
+```javascript
 /**
  * Mongoose validation options:
  * - enableMongooseRunValidators: enables the runValidators option in Mongoose update calls
@@ -279,7 +374,10 @@ config.enableResponseValidation = true
  * @type {boolean}
  */
 config.enableMongooseRunValidators = false
+```
 
+## enableResponseFail
+```javascript
 /**
  * Determines the hapi failAction of each response. Options are:
  * - true: responses that fail validation will return a 500 error.
@@ -288,7 +386,10 @@ config.enableMongooseRunValidators = false
  * @type {boolean}
  */
 config.enableResponseFail = false
+```
 
+## generateRouteScopes
+```javascript
 /**
  * If set to true, (and authStrategy is not false) then endpoints will be generated with pre-defined
  * scopes based on the model definition.
@@ -296,21 +397,30 @@ config.enableResponseFail = false
  * @type {boolean}
  */
 config.generateRouteScopes = false
+```
 
+## logScopes
+```javascript
 /**
  * If set to true, the scope for each endpoint will be logged when then endpoint is generated.
  * default: false
  * @type {boolean}
  */
 config.logScopes = false
+```
 
+## logRoutes
+```javascript
 /**
  * If set to true, each route will be logged as it is generated.
  * default: false
  * @type {boolean}
  */
 config.logRoutes = false
+```
 
+## loglevel
+```javascript
 /**
  * Log level options:
  * - INTERNAL use it for logging calls and other internal stuff
@@ -323,7 +433,10 @@ config.logRoutes = false
  * - FATAL system error condition
  */
 config.loglevel = 'NOTE'
+```
 
+## docExpansion
+```javascript
 /**
  * Determines the initial expansion state of the swagger docs
  * - options: 'none', 'list', 'full' (default: 'none')
@@ -331,18 +444,24 @@ config.loglevel = 'NOTE'
  * @type {string}
  */
 config.docExpansion = 'none'
+```
 
+## enableSwaggerUI
+```javascript
 /**
  * If set to false, SwaggerUI will not be generated.
  * - options: 'true', 'false' (default: 'true')
  * @type {boolean}
  */
 config.enableSwaggerUI = true
+```
 
+## enableSwaggerHttps
+```javascript
 /**
  * If set to true, swagger will use the https protocol rather than http.
  * - options: 'true', 'false' (default: 'false')
  * @type {boolean}
  */
 config.enableSwaggerHttps = false
-
+```

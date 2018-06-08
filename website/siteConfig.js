@@ -91,6 +91,13 @@ const siteConfig = {
   ogImage: 'img/docusaurus.png',
   twitterImage: 'img/docusaurus.png',
 
+  scrollToTop: true,
+
+  scrollToTopOptions: {
+    zIndex: 1000
+  },
+
+  editUrl: 'https://github.com/JKHeadley/rest-hapi-docs/tree/master/docs/',
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   //   repoUrl: 'https://github.com/facebook/test-site',
