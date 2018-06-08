@@ -14,7 +14,7 @@ const users = [
     caption: 'User1',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/docusaurus.svg',
+    image: '/img/rest-hapi-logo.png',
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
@@ -48,14 +48,19 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/rest-hapi-logo.png',
+  footerIcon: 'img/rest-hapi-logo.png',
+  favicon: 'img/rest-hapi-logo.png',
 
   /* colors for website */
+  // colors: {
+  //   primaryColor: '#195085',
+  //   secondaryColor: '#0d385c',
+  // },
+
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#f6941e',
+    secondaryColor: '#f9ad00',
   },
 
   /* custom fonts for website */
@@ -88,8 +93,8 @@ const siteConfig = {
   onPageNav: 'separate',
 
   /* Open Graph and Twitter card images */
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/rest-hapi-logo.png',
+  twitterImage: 'img/rest-hapi-logo.png',
 
   scrollToTop: true,
 
