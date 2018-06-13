@@ -10,7 +10,7 @@ Internally, rest-hapi uses policies to implement features such as [document auth
 
 You can enable your own custom policies in rest-hapi by setting [`config.enablePolicies`](configuration.md#enablepolicies) to `true` and adding your policy files to your `policies` directory. 
 
-**NOTE:** If your ``policies`` directory is not in your projects root directory, you will need to specify the path (relative to your projects root directory) by assigning the path to the [`config.policyPath`](configuration.md#policypath) property and you will need to set the [`config.absolutePolicyPath`](configuration.md#absolutepolicypath) property to ``true``.
+> **NOTE:** If your ``policies`` directory is not in your projects root directory, you will need to specify the path (relative to your projects root directory) by assigning the path to the [`config.policyPath`](configuration.md#policypath) property and you will need to set the [`config.absolutePolicyPath`](configuration.md#absolutepolicypath) property to ``true``.
 
 ## Generated endpoints
 You can apply policies to your generated routes through the `routeOptions.policies` property, which has the following structure:
@@ -28,7 +28,7 @@ routeOptions: {
 }
 ```
 
-**NOTE:** You can access the current model within a generated route policy function through `request.route.settings.plugins.model` (see the [example](#example-custom-authorization-via-policies) below).
+> **NOTE:** You can access the current model within a generated route policy function through `request.route.settings.plugins.model` (see the [example](#example-custom-authorization-via-policies) below).
 
 ## Custom endpoints
 You can apply policies to custom endpoints (whether [standalone](creating-endpoints.md#standalone-endpoints) or [additional](creating-endpoints.md#additional-endpoints) endpoints) by adding a `policies` object to your routes `config.plugins` object.  See the example below or refer to the [mrhorse](https://github.com/mark-bradshaw/mrhorse) docs for more info:
@@ -110,7 +110,7 @@ docAuth.applyPoint = 'onPreHandler';
 
 module.exports = docAuth;
 ```
-**NOTE:** This assumes that [`config.enableCreatedBy`](configuration.md#enablecreatedby) is set to `true`.
+> **NOTE:** This assumes that [`config.enableCreatedBy`](configuration.md#enablecreatedby) is set to `true`.
 
 They can then apply this policy to their model routes like so:
 

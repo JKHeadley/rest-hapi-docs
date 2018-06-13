@@ -86,7 +86,7 @@ module.exports = function (mongoose) {
 };
 ```
 
-**NOTE**: Unlike `ONE_MANY`, `MANY_ONE`, or `MANY_MANY` relationships which require the association to be declared on both associated models, `ONE_ONE` relationships can be one sided an only exist for one model (similar to a `_MANY` relationship).
+ > **NOTE**: Unlike `ONE_MANY`, `MANY_ONE`, or `MANY_MANY` relationships which require the association to be declared on both associated models, `ONE_ONE` relationships can be one sided an only exist for one model (similar to a `_MANY` relationship).
 
 ## ONE_MANY/MANY_ONE
 
@@ -273,7 +273,7 @@ DELETE /group/{ownerId}/user/{childId}  Remove a single user object from a group
 
 Many-many relationships can include extra fields that contain data specific to each association instance.  This is accomplished through linking models which behave similar to junction tables in a relational database.  Linking model files are stored in the ``/models/linking-models`` directory and follow the same ``{model name}.model.js`` format as normal models.  Below is an example of a many-many relationship between the ``user`` model and itself through the ``friends`` association. The extra field ``friendsSince`` could contain a date representing how long the two associated users have known each other.  This example also displays how models can contain a reference to themselves.  
 
-**NOTE**: The linking model filename does not have to match the model name, however the ``linkingModel`` association property **must** match the linking model ``modleName`` property.
+> **NOTE**: The linking model filename does not have to match the model name, however the ``linkingModel`` association property **must** match the linking model ``modleName`` property.
 
 
 ```javascript
@@ -421,7 +421,7 @@ module.exports = function (mongoose) {
 };
 ```
 
-**NOTE:** If the `embedAssociation` property is set, then it must be set to the same value for both association definitions as seen above.
+> **NOTE:** If the `embedAssociation` property is set, then it must be set to the same value for both association definitions as seen above.
 
 ### Migrating data
 

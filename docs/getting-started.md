@@ -31,7 +31,7 @@ If you need a db different than the default, you can add the URI as an argument 
 $ ./node_modules/.bin/rest-hapi-cli seed mongodb://localhost:27017/other_db
 ```
 
-**NOTE**: The password for all seed users is ``1234``.
+> **NOTE**: The password for all seed users is ``1234``.
 
 You can use these models as templates for your models or delete them later if you wish.
 
@@ -70,6 +70,6 @@ module.exports = api()
 ```
 You can then run ``$ node api.js`` and point your browser to [http://localhost:8080/](http://localhost:8080/) to view the swagger docs 
 
-**NOTE**: API endpoints will only be generated if you have provided models. See [Example Data](#example-data) or [Creating endpoints](creating-endpoints.md).
+> **NOTE**: API endpoints will only be generated if you have provided models. See [Example Data](#example-data) or [Creating endpoints](creating-endpoints.md).
 
 For a ready-to-go demo project see [rest-hapi-demo](https://github.com/JKHeadley/rest-hapi-demo)

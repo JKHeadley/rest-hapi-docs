@@ -68,7 +68,7 @@ module.exports = function (mongoose) {
 };r
 ```
 
-**NOTE:** Use of route scope properties requires that an authentication strategy be defined and implemented. If the [`config.authStrategy`](configuration.md#authstrategy) property is set to ``false``, then no route scopes will be applied, even if they are defined in the model.  For an example of route scopes in action, check out [appy](https://github.com/JKHeadley/appy):
+> **NOTE:** Use of route scope properties requires that an authentication strategy be defined and implemented. If the [`config.authStrategy`](configuration.md#authstrategy) property is set to ``false``, then no route scopes will be applied, even if they are defined in the model.  For an example of route scopes in action, check out [appy](https://github.com/JKHeadley/appy):
 
 ## Generating route scopes
 If the [`config.generateRouteScopes`](configuration.md#generateroutescopes) property is set to true, then generated endpoints will come pre-defined with scope values.  These values will exist in addition to any route scope values defined in the ``routeOptions.routeScope`` object. For instance, the tables below show two possibilities for the user model scope: the first is with no model route scope defined, and the second is with a model route scope defined as in the example above.

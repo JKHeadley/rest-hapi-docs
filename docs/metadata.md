@@ -42,7 +42,7 @@ If I later update that user's email then an additional query might return:
 
 The ``deletedAt`` property marks when a document was [soft deleted](soft-delete.md).
 
-**NOTE**: Timestamp metadata properties are only set/updated if the document is created/modified using rest-hapi endpoints/methods.
+> **NOTE**: Timestamp metadata properties are only set/updated if the document is created/modified using rest-hapi endpoints/methods.
 Ex: 
 
 ``mongoose.model('user').findByIdAndUpdate(_id, payload)`` will not modify ``updatedAt`` whereas
@@ -59,4 +59,4 @@ If enabled, these properties will record the `_id` of the user performing the co
 
 This assumes that your authentication credentials (request.auth.credentials) will contain either a `user` object with a `_id` property, or the user's \_id stored in a property defined by [`config.userIdKey`](configuration.md#useridkey).
 
-**NOTE**: Unlike timestamp metadata, user tag properties are only set/updated if the document is created/modified using rest-hapi endpoints, (not rest-hapi [methods](mongoose-wrapper-methods.md)).
+> **NOTE**: Unlike timestamp metadata, user tag properties are only set/updated if the document is created/modified using rest-hapi endpoints, (not rest-hapi [methods](mongoose-wrapper-methods.md)).

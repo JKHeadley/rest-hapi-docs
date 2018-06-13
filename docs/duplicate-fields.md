@@ -77,7 +77,7 @@ module.exports = function (mongoose) {
 
 ```
 
-**NOTE:** Only associations of type `MANY_ONE` and `ONE_ONE` can have the `duplicate` property.
+> **NOTE:** Only associations of type `MANY_ONE` and `ONE_ONE` can have the `duplicate` property.
 
 Given these model definitions, lets say we have the following role documents:
 
@@ -367,7 +367,7 @@ Given the relationships between these models, a set of associated documents migh
 
 As you can see, the value for the user document's duplicate field `company` can be traced back to the `name` field for the business document. If [`config.trackDuplicatedFields`](configuration.md#trackduplicatedfields) is set to `true`, then updating the original `name` field will cause both the role's `businessName` field and the user's `company` fields to update as well.
 
-**NOTE:** If a duplicate field references another duplicate field, then the referenced field must exist in the model schema.  See the `businessName` field of the `role` model above.
+> **NOTE:** If a duplicate field references another duplicate field, then the referenced field must exist in the model schema.  See the `businessName` field of the `role` model above.
 
 ## Advantages
 The duplicate fields feature may seem trivial or redundant considering the same information can be included in a GET request using the [$embed](querying.md#populate-nested-associations) query parameter, however duplicate fields come with some powerful advantages. Probably the most clear advantage is the potential for improving the readability of a document. In situations where querying for the association is not ideal or possible (Ex: observing the document within MongoDB), it is much easier to discern information about the document. For example:
