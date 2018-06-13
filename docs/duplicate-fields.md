@@ -4,7 +4,7 @@ title: Duplicate Fields
 sidebar_label: Duplicate Fields
 ---
 
-"Duplicate fields" is a rest-hapi feature that allows fields from an associated document to exist in the parent document while maintaining the original field value. This can be accomplished by setting `config.enableDuplicateFields` to `true` and adding the `duplicate` property to an association definition. 
+"Duplicate fields" is a rest-hapi feature that allows fields from an associated document to exist in the parent document while maintaining the original field value. This can be accomplished by setting [`config.enableDuplicateFields`](configuration.md#enableduplicatefields) to `true` and adding the `duplicate` property to an association definition. 
 
 ## Basic example
 In the code below, the `name` field of the role model will be duplicated in the user model:
@@ -137,7 +137,7 @@ Now when we retrieve the user document, we will see:
 The `roleName` duplicate field was automatically updated to reflect the association change!
 
 # Tracking duplicated fields
-In the above example, we showed how the `roleName` duplicate field could automatically update when the user's `role` property changed. However what if the associated role document's `name` property was updated? By default, the user's `roleName` property will remain the same even if the original field value changes. However, by setting `config.trackDuplicatedFields` to `true`, rest-hapi will track changes from the original field and update **_ALL_** associated duplicate fields. For example, if we have the following user documents:
+In the above example, we showed how the `roleName` duplicate field could automatically update when the user's `role` property changed. However what if the associated role document's `name` property was updated? By default, the user's `roleName` property will remain the same even if the original field value changes. However, by setting [`config.trackDuplicatedFields`](configuration.md#trackduplicatedfields) to `true`, rest-hapi will track changes from the original field and update **_ALL_** associated duplicate fields. For example, if we have the following user documents:
 
 
 ```javascript
@@ -165,7 +165,7 @@ and we update the associated role document to be:
     }
 ```
 
-if `config.trackDuplicatedFields` is set to `true`, then the user documents will now look like:
+if [`config.trackDuplicatedFields`](configuration.md#trackduplicatedfields) is set to `true`, then the user documents will now look like:
 
 ```javascript
     {
@@ -365,12 +365,12 @@ Given the relationships between these models, a set of associated documents migh
    }
 ```
 
-As you can see, the value for the user document's duplicate field `company` can be traced back to the `name` field for the business document. If `config.trackDuplicatedFields` is set to `true`, then updating the original `name` field will cause both the role's `businessName` field and the user's `company` fields to update as well.
+As you can see, the value for the user document's duplicate field `company` can be traced back to the `name` field for the business document. If [`config.trackDuplicatedFields`](configuration.md#trackduplicatedfields) is set to `true`, then updating the original `name` field will cause both the role's `businessName` field and the user's `company` fields to update as well.
 
 **NOTE:** If a duplicate field references another duplicate field, then the referenced field must exist in the model schema.  See the `businessName` field of the `role` model above.
 
 ## Advantages
-The duplicate fields feature may seem trivial or redundant considering the same information can be included in a GET request using the [$embed](populate-nested-associations) query parameter, however duplicate fields come with some powerful advantages. Probably the most clear advantage is the potential for improving the readability of a document. In situations where querying for the association is not ideal or possible (Ex: observing the document within MongoDB), it is much easier to discern information about the document. For example:
+The duplicate fields feature may seem trivial or redundant considering the same information can be included in a GET request using the [$embed](querying.md#populate-nested-associations) query parameter, however duplicate fields come with some powerful advantages. Probably the most clear advantage is the potential for improving the readability of a document. In situations where querying for the association is not ideal or possible (Ex: observing the document within MongoDB), it is much easier to discern information about the document. For example:
 
 `doc1`:
 ```javascript

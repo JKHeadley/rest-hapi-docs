@@ -49,8 +49,8 @@ const siteConfig = {
 
   /* path to images for header/footer */
   headerIcon: 'img/rest-hapi-logo.png',
-  footerIcon: 'img/rest-hapi-logo.png',
-  favicon: 'img/rest-hapi-logo.png',
+  footerIcon: 'img/rest-hapi-logo-alt.png',
+  favicon: 'img/rest-hapi-logo-alt.png',
 
   /* colors for website */
   // colors: {
@@ -93,8 +93,8 @@ const siteConfig = {
   onPageNav: 'separate',
 
   /* Open Graph and Twitter card images */
-  ogImage: 'img/rest-hapi-logo.png',
-  twitterImage: 'img/rest-hapi-logo.png',
+  ogImage: 'img/rest-hapi-logo-alt.png',
+  twitterImage: 'img/rest-hapi-logo-alt.png',
 
   scrollToTop: true,
 

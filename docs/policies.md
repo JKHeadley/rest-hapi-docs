@@ -6,11 +6,11 @@ sidebar_label: Policies
 
 rest-hapi comes with built-in support for policies via the [mrhorse](https://github.com/mark-bradshaw/mrhorse) plugin. Policies provide a powerful method of applying the same business logic to multiple routes declaratively. They can be inserted at any point in the [hapi request lifecycle](https://hapijs.com/api#request-lifecycle), allowing you to layer your business logic in a clean, organized, and centralized manner. We highly recommend you learn more about the details and benefits of policies in the [mrhorse readme](https://github.com/mark-bradshaw/mrhorse).
 
-Internally, rest-hapi uses policies to implement features such as [document authorization](#document-authorization), [audit logs](#audit-logs), and certain [metadata](#user-tags).
+Internally, rest-hapi uses policies to implement features such as [document authorization](authorization.md#document-authorization), [audit logs](audit-logs.md), and certain [metadata](metadata.md#user-tags).
 
-You can enable your own custom policies in rest-hapi by setting `config.enablePolicies` to `true` and adding your policy files to your `policies` directory. 
+You can enable your own custom policies in rest-hapi by setting [`config.enablePolicies`](configuration.md#enablepolicies) to `true` and adding your policy files to your `policies` directory. 
 
-**NOTE:** If your ``policies`` directory is not in your projects root directory, you will need to specify the path (relative to your projects root directory) by assigning the path to the ``config.policyPath`` property and you will need to set the ``config.absolutePolicyPath`` property to ``true``.
+**NOTE:** If your ``policies`` directory is not in your projects root directory, you will need to specify the path (relative to your projects root directory) by assigning the path to the [`config.policyPath`](configuration.md#policypath) property and you will need to set the [`config.absolutePolicyPath`](configuration.md#absolutepolicypath) property to ``true``.
 
 ## Generated endpoints
 You can apply policies to your generated routes through the `routeOptions.policies` property, which has the following structure:
@@ -31,7 +31,7 @@ routeOptions: {
 **NOTE:** You can access the current model within a generated route policy function through `request.route.settings.plugins.model` (see the [example](#example-custom-authorization-via-policies) below).
 
 ## Custom endpoints
-You can apply policies to custom endpoints (whether [standalone](#standalone-endpoints) or [additional](#additional-endpoints) endpoints) by adding a `policies` object to your routes `config.plugins` object.  See the example below or refer to the [mrhorse](https://github.com/mark-bradshaw/mrhorse) docs for more info:
+You can apply policies to custom endpoints (whether [standalone](creating-endpoints.md#standalone-endpoints) or [additional](creating-endpoints.md#additional-endpoints) endpoints) by adding a `policies` object to your routes `config.plugins` object.  See the example below or refer to the [mrhorse](https://github.com/mark-bradshaw/mrhorse) docs for more info:
 
 ```javascript
    server.route({
@@ -65,18 +65,18 @@ You can apply policies to custom endpoints (whether [standalone](#standalone-end
 ```
 
 ## Policies vs middleware
-Since policies and [middleware functions](#middleware) seem to provide similar funcitonality, it's important to understand their differences in order to determine which is best suited for your use case. Listed below are a few of the major differences:
+Since policies and [middleware functions](middleware.md) seem to provide similar funcitonality, it's important to understand their differences in order to determine which is best suited for your use case. Listed below are a few of the major differences:
 
 Policies | Middleware
 --- | ---
 Policies are most useful when applied to multiple routes for multiple models, which is why they are located in a centralized place | Middleware functions are meant to be both model and endpoint specific
-Policies are only active when an endpoint is called | Middleware functions are active when either an endpoint is called or when a [wrapper method](#mongoose-wrapper-methods) is used
+Policies are only active when an endpoint is called | Middleware functions are active when either an endpoint is called or when a [wrapper method](mongoose-wrapper-methods.md) is used
 Policies can run before (`onPreHandler`) or after (`onPostHander`) the handler function | Since middleware functions are run as part of the handler, a `pre` middleware function will run after any `onPreHandler` policy, and a `post` middlware function will run before any `onPostHandler` policy
 
 ## Example: custom authorization via policies
 To provide an example of the power of policies within rest-hapi, consider the following scenario:
 
-A developer wants to implement document authorization, but wants to maintain control over the implementation and have the option of providing functionality outside of what is available with rest-hapi's built in [document authorization](#document-authorization). They want to only allow the user that creates a document to be able to modify the document. They decide to implement this via the policy below (`docAuth.js`).
+A developer wants to implement document authorization, but wants to maintain control over the implementation and have the option of providing functionality outside of what is available with rest-hapi's built in [document authorization](authorization.md#document-authorization). They want to only allow the user that creates a document to be able to modify the document. They decide to implement this via the policy below (`docAuth.js`).
 
 ```javascript
 const Boom = require('boom')
@@ -110,7 +110,7 @@ docAuth.applyPoint = 'onPreHandler';
 
 module.exports = docAuth;
 ```
-**NOTE:** This assumes that `config.enableCreatedBy` is set to `true`.
+**NOTE:** This assumes that [`config.enableCreatedBy`](configuration.md#enablecreatedby) is set to `true`.
 
 They can then apply this policy to their model routes like so:
 

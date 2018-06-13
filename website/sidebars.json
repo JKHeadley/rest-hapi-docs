@@ -19,9 +19,13 @@
       "mongoose-wrapper-methods",
       "soft-delete",
       "metadata",
-      "misc"
+      "model-generation"
     ],
-    "Second Category": ["doc3"]
+    "Other": [
+      "testing",
+      "questions",
+      "support"
+    ]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]

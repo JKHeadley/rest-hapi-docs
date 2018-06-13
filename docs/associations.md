@@ -4,7 +4,7 @@ title: Associations
 sidebar_label: Assocations
 ---
 
-The rest-hapi framework supports model associations that mimic associations in a relational database.  This includes [one-one](#one_one), [one-many](#one_manymany_one), [many-one](#one_manymany_one), and [many-many](#many_many) relationships.  Associations are created by adding the relevant schema fields and populating the ``associations`` object within ``routeOptions``.  Associations exists as references to a document's ``_id`` field, and can be populated to return the associated object.  See [Querying](#querying) for more details on how to populate associations.
+The rest-hapi framework supports model associations that mimic associations in a relational database.  This includes [one-one](#one-one), [one-many](#one-many-many-one), [many-one](#one-many-many-one), and [many-many](#many-many) relationships.  Associations are created by adding the relevant schema fields and populating the ``associations`` object within ``routeOptions``.  Associations exists as references to a document's ``_id`` field, and can be populated to return the associated object.  See [Querying](querying.md#populate-nested-associations) for more details on how to populate associations.
 
 ## ONE_ONE
 
@@ -337,7 +337,7 @@ module.exports = function () {
 
 ### Data storage
 
-By nature every new instance of a MANY_MANY association adds new data to the database. At minimum this data must contain the `_id`s of the associated documents, but this can be extended to include extra fields through a [linking model](#many_many-linking-models). rest-hapi provides two options as to how this data is stored in the db (controlled by the `config.embedAssociations` property):
+By nature every new instance of a MANY_MANY association adds new data to the database. At minimum this data must contain the `_id`s of the associated documents, but this can be extended to include extra fields through a [linking model](#linking-models). rest-hapi provides two options as to how this data is stored in the db (controlled by the [`config.embedAssociations`](configuration.md#embedassociations) property):
 
 - `config.embedAssociations`: true
     * The data is embeded as an array property within the related documents.
@@ -358,7 +358,7 @@ By nature every new instance of a MANY_MANY association adds new data to the dat
         - Reading data is slower (theoretically, not proven).
         - Less human readable.
         
-The `config.embedAssociations` can be overwritten for individual associations through the `embedAssociation` property. See the example below:
+The [`config.embedAssociations`](configuration.md#embedassociations) can be overwritten for individual associations through the `embedAssociation` property. See the example below:
 
 ```javascript
 module.exports = function (mongoose) {
@@ -432,12 +432,12 @@ As of v0.28.0 the rest-hapi cli includes an `update-associations` command that c
 where:
 
 - `mongoURI`: The URI to you mongodb database
-- `embedAssociations`: (optional, defaults to `false`) This must match your current `config.embedAssociations` value.
-- `modelPath`: (optional, defaults to `models`) This must match your `config.modelPath` value if you have `config.absoluteModelPath` set to `true`.
+- `embedAssociations`: (optional, defaults to `false`) This must match your current [`config.embedAssociations`](configuration.md#embedassociations) value.
+- `modelPath`: (optional, defaults to `models`) This must match your `config.modelPath` value if you have [`config.absoluteModelPath`](configuration.md#absolutemodelpath) set to `true`.
 
 This is useful if you have a db populated with documents and you decide to change the `embedAssociaion` property of one or more associations. 
 
-For instance, consider a MANY_MANY relationship between `user` (groups) and `group`  (users) with `config.embedAssociations` set to `true`. Each `user` document will contain the array `groups` and each `group` document will contain the array `users`. Lets say you implement this structure in a project, but several months into the project some of your `group` documents have collected thousands of `users`, resulting in very large document sizes. You decide it would be better to migrate the data out of the parent documents and into a linking collection, `user_group`. You can do this by setting the `embedAssociation` property for `users` and `groups` to `false`, and running the following command:
+For instance, consider a MANY_MANY relationship between `user` (groups) and `group`  (users) with [`config.embedAssociations`](configuration.md#embedassociations) set to `true`. Each `user` document will contain the array `groups` and each `group` document will contain the array `users`. Lets say you implement this structure in a project, but several months into the project some of your `group` documents have collected thousands of `users`, resulting in very large document sizes. You decide it would be better to migrate the data out of the parent documents and into a linking collection, `user_group`. You can do this by setting the `embedAssociation` property for `users` and `groups` to `false`, and running the following command:
 
 `$ ./node_modules/.bin/rest-hapi-cli update-associations mongodb://localhost:27017/mydb true`
 

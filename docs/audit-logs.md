@@ -4,7 +4,7 @@ title: Audit Logs
 sidebar_label: Audit Logs
 ---
 
- By default, rest-hapi records all document-modifiying activities that occur within the [generated endpoints](#creating-endpoints). Each event is stored as a document within the `auditLog` collection.  The audit log documents can be set to expire by providing a value for `config.auditLogTTL`.  The value can be specified in integer seconds or as a human-readable time period (Ex: 60 = 60 seconds, '1m' = 1 minute, or '1d' = 1 day). Audit logs can be disabled by setting `config.enableAuditLog` to `false`. Also, a [scope](#authorization) can be added to the `auditLog` endpoints through `config.auditLogScope`, giving you control over who can access/create logs. Below is a list of the properties included in each auditLog document:
+ By default, rest-hapi records all document-modifiying activities that occur within the [generated endpoints](creating-endpoints.md). Each event is stored as a document within the `auditLog` collection.  The audit log documents can be set to expire by providing a value for `config.auditLogTTL`.  The value can be specified in integer seconds or as a human-readable time period (Ex: 60 = 60 seconds, '1m' = 1 minute, or '1d' = 1 day). Audit logs can be disabled by setting `config.enableAuditLog` to `false`. Also, a [scope](authorization.md) can be added to the `auditLog` endpoints through `config.auditLogScope`, giving you control over who can access/create logs. Below is a list of the properties included in each auditLog document:
  
  - `date`
     * The date the action took place.
@@ -22,7 +22,7 @@ sidebar_label: Audit Logs
     * Can be null.
  - `user`
     * If the endpoint is authenticated, this will be the \_id of the requesting user.
-    * You can specify the user \_id path/key through `config.userIdKey`.
+    * You can specify the user \_id path/key through [`config.userIdKey`](configuration.md#useridkey).
     * Can be null.
  - `collectionName`
     * The name of the primary/owner collection being modified.

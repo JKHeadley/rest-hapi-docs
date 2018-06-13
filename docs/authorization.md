@@ -68,10 +68,10 @@ module.exports = function (mongoose) {
 };r
 ```
 
-**NOTE:** Use of route scope properties requires that an authentication strategy be defined and implemented. If the ``config.authStrategy`` property is set to ``false``, then no route scopes will be applied, even if they are defined in the model.  For an example of route scopes in action, check out [appy](https://github.com/JKHeadley/appy):
+**NOTE:** Use of route scope properties requires that an authentication strategy be defined and implemented. If the [`config.authStrategy`](configuration.md#authstrategy) property is set to ``false``, then no route scopes will be applied, even if they are defined in the model.  For an example of route scopes in action, check out [appy](https://github.com/JKHeadley/appy):
 
 ## Generating route scopes
-If the ``config.generateRouteScopes`` property is set to true, then generated endpoints will come pre-defined with scope values.  These values will exist in addition to any route scope values defined in the ``routeOptions.routeScope`` object. For instance, the tables below show two possibilities for the user model scope: the first is with no model route scope defined, and the second is with a model route scope defined as in the example above.
+If the [`config.generateRouteScopes`](configuration.md#generateroutescopes) property is set to true, then generated endpoints will come pre-defined with scope values.  These values will exist in addition to any route scope values defined in the ``routeOptions.routeScope`` object. For instance, the tables below show two possibilities for the user model scope: the first is with no model route scope defined, and the second is with a model route scope defined as in the example above.
 
 
 ### Without Model Route Scope Defined
@@ -119,7 +119,7 @@ deleteAuth: false | auth is disabled for any endpoint that deletes documents
 associateAuth: false | auth is disabled for any endpoint that modifies an association
 
 ## Document authorization
-In addition to route-level authorization, rest-hapi supports document-specific authorization. For consistency, document authorization is implemented through the use of scopes similar to the hapi scope system. To enable document scopes, `config.enableDocumentScopes` must be set to `true`. Once set, the `scope` field shown below will be added to the schema of every model:
+In addition to route-level authorization, rest-hapi supports document-specific authorization. For consistency, document authorization is implemented through the use of scopes similar to the hapi scope system. To enable document scopes, [`config.enableDocumentScopes`](configuration.md#enabledocumentscopes) must be set to `true`. Once set, the `scope` field shown below will be added to the schema of every model:
 
 ```javascript
 {
@@ -158,7 +158,7 @@ Then users with the `Admin` scope value would have full access to the document w
 
 rest-hapi provides several options for populating a document's scope. One option is through the `routeOptions.documentScope` property. Any values added to this property will be copied over to a document's `scope` property upon its creation. 
 
-Another option is to set `config.authorizeDocumentCreator` to `true`. Setting this option will add the \_id of the user who created the document to the document's `rootScope` property (in the form of `user-{_id}`, where `{_id}` is the \_id of the user). Assuming `user-{_id}` is in the user's scope, this will grant the user full access to any document the user creates. Consider the example document below created by a user with an \_id of `59d93c673401e16f0f66a5d4`:
+Another option is to set [`config.authorizeDocumentCreator`](configuration.md#authorizedocumentcreator) to `true`. Setting this option will add the \_id of the user who created the document to the document's `rootScope` property (in the form of `user-{_id}`, where `{_id}` is the \_id of the user). Assuming `user-{_id}` is in the user's scope, this will grant the user full access to any document the user creates. Consider the example document below created by a user with an \_id of `59d93c673401e16f0f66a5d4`:
 
 ```javascript
 name: "Test doc",

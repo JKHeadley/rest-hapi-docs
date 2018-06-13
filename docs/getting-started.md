@@ -70,6 +70,6 @@ module.exports = api()
 ```
 You can then run ``$ node api.js`` and point your browser to [http://localhost:8080/](http://localhost:8080/) to view the swagger docs 
 
-**NOTE**: API endpoints will only be generated if you have provided models. See [Example Data](#example-data) or [Creating endpoints](#creating-endpoints).
+**NOTE**: API endpoints will only be generated if you have provided models. See [Example Data](#example-data) or [Creating endpoints](creating-endpoints.md).
 
 For a ready-to-go demo project see [rest-hapi-demo](https://github.com/JKHeadley/rest-hapi-demo)
