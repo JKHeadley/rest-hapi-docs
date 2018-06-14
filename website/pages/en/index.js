@@ -76,14 +76,24 @@ class HomeSplash extends React.Component {
     let language = this.props.language || '';
     return (
       <SplashContainer>
-        <Logo img_src={imgUrl('docusaurus.svg')} />
         <div className="inner">
+          <h2 className="projectTitle"><img title="rest-hapi" src={imgUrl('rest-hapi-logo-alt.png')}/></h2>
+          {/*<Logo img_src={imgUrl('rest-hapi-logo-alt.png')} />*/}
           <ProjectTitle />
           <PromoSection>
             <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html', language)}>Example Link</Button>
-            <Button href={docUrl('doc2.html', language)}>Example Link 2</Button>
+            <Button href={docUrl('getting-started.html', language)}>Get Started</Button>
           </PromoSection>
+          <a
+            className="github-button"
+            href={siteConfig.repoUrl}
+            data-icon="octicon-star"
+            data-count-href="/JKHeadley/rest-hapi/stargazers"
+            data-show-count={true}
+            data-count-aria-label="# stargazers on GitHub"
+            aria-label="Star this project on GitHub">
+            Star
+          </a>
         </div>
       </SplashContainer>
     );
@@ -103,16 +113,22 @@ const Features = props => (
   <Block layout="fourColumn">
     {[
       {
-        content: 'This is the content of my feature',
-        image: imgUrl('docusaurus.svg'),
+        content: 'Customize endpoints with configuration based features and hapi plugins.',
+        image: imgUrl('flexible_icon.png'),
         imageAlign: 'top',
-        title: 'Feature One',
+        title: 'Flexible',
       },
       {
-        content: 'The content of my second feature',
-        image: imgUrl('docusaurus.svg'),
+        content: 'Relational structure built into NoSQL documents based on mongoose schemas.',
+        image: imgUrl('powerful_icon.png'),
         imageAlign: 'top',
-        title: 'Feature Two',
+        title: 'Powerful',
+      },
+      {
+        content: 'Less time with boilerplate functionality and more time building awesome APIs!',
+        image: imgUrl('efficient_icon.png'),
+        imageAlign: 'top',
+        title: 'Efficient',
       },
     ]}
   </Block>

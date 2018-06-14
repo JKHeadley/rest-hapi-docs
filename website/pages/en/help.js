@@ -23,13 +23,13 @@ class Help extends React.Component {
     const supportLinks = [
       {
         content: `Learn more using the [documentation on this site.](${docUrl(
-          'doc1.html',
+          'getting-started.html',
           language
         )})`,
         title: 'Browse Docs',
       },
       {
-        content: 'Ask questions about the documentation and project',
+        content: 'Ask questions about the documentation and project. Submit an [issue](https://github.com/JKHeadley/rest-hapi/issues) or chat on [gitter](https://gitter.im/rest-hapi/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge).',
         title: 'Join the community',
       },
       {
