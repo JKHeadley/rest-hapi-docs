@@ -43,6 +43,11 @@ const siteConfig = {
     //{doc: 'doc4', label: 'API'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    {page: 'users', label: 'Users'},
+    {
+      href: 'https://github.com/JKHeadley/rest-hapi',
+      label: 'GitHub',
+    },
   ],
 
   // If you have users set above, you add it here:

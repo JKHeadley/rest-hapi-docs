@@ -22,19 +22,23 @@ class Help extends React.Component {
     let language = this.props.language || '';
     const supportLinks = [
       {
-        content: `Learn more using the [documentation on this site.](${docUrl(
+        content: `Learn more about rest-hapi using the [documentation on this site.](${docUrl(
           'getting-started.html',
           language
         )})`,
-        title: 'Browse Docs',
+        title: 'Browse the docs',
       },
       {
-        content: 'Ask questions about the documentation and project. Submit an [issue](https://github.com/JKHeadley/rest-hapi/issues) or chat on [gitter](https://gitter.im/rest-hapi/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge).',
-        title: 'Join the community',
+        content: 'Ask questions about the documentation and project. Join the conversation on [gitter](https://gitter.im/rest-hapi/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)!',
+        title: 'Gitter',
       },
       {
-        content: "Find out what's new with this project",
-        title: 'Stay up to date',
+        content: "You can follow and contact us on [Twitter](https://twitter.com/resthapi).",
+        title: 'Twitter',
+      },
+      {
+        content: "At our [GitHub repo](https://github.com/JKHeadley/rest-hapi) Browse and submit [issues](https://github.com/JKHeadley/rest-hapi/issues) or [pull requests](https://github.com/JKHeadley/rest-hapi/pulls) for bugs you find or any new features you may want implemented. Be sure to also check out our [contributing information](https://github.com/JKHeadley/rest-hapi/blob/master/CONTRIBUTING.md).",
+        title: 'GitHub',
       },
     ];
 
@@ -45,8 +49,8 @@ class Help extends React.Component {
             <header className="postHeader">
               <h2>Need help?</h2>
             </header>
-            <p>This project is maintained by a dedicated group of people.</p>
-            <GridBlock contents={supportLinks} layout="threeColumn" />
+            <p>If you need help with rest-hapi, you can try one of the mechanisms below.</p>
+            <GridBlock contents={supportLinks} layout="fourColumn" />
           </div>
         </Container>
       </div>
