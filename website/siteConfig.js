@@ -9,16 +9,7 @@
 // site configuration options.
 
 /* List of projects/orgs using your project for the users page */
-const users = [
-  {
-    caption: 'appy',
-    // You will need to prepend the image path with your baseUrl
-    // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/rest-hapi/img/appy.png',
-    infoLink: 'https://www.appyapp.io',
-    pinned: true,
-  },
-];
+const users = require('./data/users');
 
 const siteConfig = {
   title: 'rest-hapi' /* title for your website */,
