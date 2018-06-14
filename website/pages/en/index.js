@@ -8,9 +8,19 @@
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
-const Container = CompLibrary.Container;
-const GridBlock = CompLibrary.GridBlock;
+// const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
+// const Container = CompLibrary.Container;
+// const GridBlock = CompLibrary.GridBlock;
+//
+// const translate = require('../../server/translate.js').translate;
+
+const translation = require('../../server/translation.js'); // eslint-disable-line import/no-unresolved
+const {
+  Container,
+  GridBlock,
+  MarkdownBlock,
+} = require('../../core/CompLibrary'); // eslint-disable-line import/no-unresolved
+const { translate } = require('../../server/translate'); // eslint-disable-line import/no-unresolved
 
 const siteConfig = require(process.cwd() + '/siteConfig.js');
 
@@ -138,16 +148,30 @@ const FeatureCallout = props => (
   <div
     className="productShowcaseSection paddingBottom"
     style={{textAlign: 'center'}}>
-    <h2>Feature Callout</h2>
-    <MarkdownBlock>These are features of this project</MarkdownBlock>
+    <h2>What does it do?</h2>
+    <MarkdownBlock>rest-hapi uses mongoose schemas to generate [CRUD](docs/creating-endpoints.html) and [association](docs/associations.html) REST API endpoints. Generating the endpoints allows for a rich set of [configurable](docs/configuration.html) features such as:
+    </MarkdownBlock>
   </div>
+
+
 );
 
-const LearnHow = props => (
+const FeaturesList = props => (
   <Block background="light">
     {[
       {
-        content: 'Talk about learning how to use this',
+        content: `
+- [Middleware](docs/middleware.html) support
+- Query parameter, header, payload, and response [validation](docs/validation.html) using [joi](https://github.com/hapijs/joi)
+- Route-level and document-level [authorization](docs/authorization.html)
+- [Swagger docs](docs/swagger-documentation.html) via [hapi-swagger](https://github.com/glennjones/hapi-swagger)
+- [Query parameter](docs/querying.html) support for searching, sorting, filtering, pagination, and [embedding of associated models](docs/querying.html#populate-nested-associations)
+- Endpoint activity history through [Audit Logs](docs/audit-logs.html)
+- Support for [policies](docs/policies.html) via [mrhorse](https://github.com/mark-bradshaw/mrhorse)
+- [Duplicate fields](docs/duplicate-fields.html)
+- Support for ["soft" delete](docs/soft-delete.html)
+- Optional [metadata](docs/metadata.html)
+`,
         image: imgUrl('docusaurus.svg'),
         imageAlign: 'right',
         title: 'Learn How',
@@ -155,6 +179,85 @@ const LearnHow = props => (
     ]}
   </Block>
 );
+
+
+const sh = (...args) => `~~~sh\n${String.raw(...args)}\n~~~`;
+
+const Querying = props => {
+  return (
+    <Container padding={['bottom', 'top']} background="light">
+      <div className="gridBlock">
+        <div className="blockElement imageAlignSide imageAlignRight twoByGridBlock">
+          <div className="blockContent">
+            <h2>
+              <div>
+                <span><p><a href="docs/querying.html">Querying</a></p>
+                </span>
+              </div>
+            </h2>
+            <div>
+              <span>
+                <MarkdownBlock>Search, sort, filter, paginate, and [embed associated data](docs/querying.html#populate-nested-associations).</MarkdownBlock>
+                <div className="blockContentHighlight"><MarkdownBlock>{sh`http get :8080/user \$limit==2 \$sort==email \$embed==role`}</MarkdownBlock></div>
+              </span>
+            </div>
+          </div>
+          <div className="blockImage"><img src="/rest-hapi/img/querying.png"/></div>
+        </div>
+      </div>
+    </Container>
+  )
+}
+
+const Validation = props => {
+  return (
+    <Container padding={['bottom', 'top']} background="dark">
+      <div className="gridBlock">
+        <div className="blockElement alignCenter imageAlignSide imageAlignLeft twoByGridBlock">
+          <div className="blockImage"><img src="/rest-hapi/img/joi.png"/></div>
+          <div className="blockContent">
+            <h2>
+              <div>
+                <span><p><a href="docs/validation.html">Validation</a></p>
+                </span>
+              </div>
+            </h2>
+            <div>
+              <span>
+                <MarkdownBlock>Query parameter, header, payload, and response [validation](docs/validation.html) using [joi](https://github.com/hapijs/joi).</MarkdownBlock>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  )
+}
+
+const Swagger = props => {
+  return (
+    <Container padding={['bottom', 'top']} background="light">
+      <div className="gridBlock">
+        <div className="blockElement imageAlignSide imageAlignRight twoByGridBlock">
+          <div className="blockContent">
+            <h2>
+              <div>
+                <span><p><a href="docs/swagger-documentation.html">Swagger</a></p>
+                </span>
+              </div>
+            </h2>
+            <div>
+              <span>
+                <MarkdownBlock>[Swagger docs](docs/swagger-documentation.html) provide a UI for your endpoints so you can easily interact with your data.</MarkdownBlock>
+              </span>
+            </div>
+          </div>
+          <div className="blockImage"><img src="/rest-hapi/img/appy-api-screenshot.png"/></div>
+        </div>
+      </div>
+    </Container>
+  )
+}
 
 const TryOut = props => (
   <Block id="try">
@@ -164,19 +267,6 @@ const TryOut = props => (
         image: imgUrl('docusaurus.svg'),
         imageAlign: 'left',
         title: 'Try it Out',
-      },
-    ]}
-  </Block>
-);
-
-const Description = props => (
-  <Block background="dark">
-    {[
-      {
-        content: 'This is another description of how this project is useful',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Description',
       },
     ]}
   </Block>
@@ -222,9 +312,11 @@ class Index extends React.Component {
         <div className="mainContainer">
           <Features />
           <FeatureCallout />
-          <LearnHow />
+          {/*<FeaturesList />*/}
+          <Querying />
+          <Validation/>
+          <Swagger/>
           <TryOut />
-          <Description />
           <Showcase language={language} />
         </div>
       </div>

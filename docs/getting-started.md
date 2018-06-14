@@ -11,7 +11,7 @@ You need [Node.js](https://nodejs.org/en/) installed and you'll need [MongoDB](h
 In your project directory, run:
 
 
-```
+```sh
 $ npm install rest-hapi
 ```
 
@@ -21,13 +21,13 @@ $ npm install rest-hapi
 
 If you would like to seed your database with some demo models/data, run:
 
-```
+```sh
 $ ./node_modules/.bin/rest-hapi-cli seed
 ```
 
 If you need a db different than the default, you can add the URI as an argument to the command:
 
-```
+```sh
 $ ./node_modules/.bin/rest-hapi-cli seed mongodb://localhost:27017/other_db
 ```
 

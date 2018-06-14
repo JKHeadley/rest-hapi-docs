@@ -11,11 +11,11 @@
 /* List of projects/orgs using your project for the users page */
 const users = [
   {
-    caption: 'User1',
+    caption: 'appy',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/rest-hapi-logo.png',
-    infoLink: 'https://www.facebook.com',
+    image: '/rest-hapi/img/appy.png',
+    infoLink: 'https://www.appyapp.io',
     pinned: true,
   },
 ];
@@ -84,7 +84,7 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: 'default',
+    theme: 'atom-one-dark',
   },
 
   // Add custom scripts here that would be placed in <script> tags
