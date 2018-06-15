@@ -259,18 +259,21 @@ const Swagger = props => {
   )
 }
 
-const TryOut = props => (
-  <Block id="try">
-    {[
-      {
-        content: 'Talk about trying this out',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'left',
-        title: 'Try it Out',
-      },
-    ]}
-  </Block>
-);
+const TryOut = props => {
+
+  return (
+    <Container padding={['bottom', 'top']} background="highlight" align={'center'}>
+      <div className="productShowcaseSection paddingBottom" id='try'>
+        <h2 className={'tryItOut'}>{"Try it out!"}</h2>
+        <MarkdownBlock>Check out the [demo project](https://github.com/JKHeadley/rest-hapi-demo) or click the button below to play with the live demo.</MarkdownBlock>
+        {/*<p>Check out the live demo or </p>*/}
+        <a className="button" href={pageUrl('demo.html', props.language)}>
+          LIVE DEMO
+        </a>
+      </div>
+    </Container>
+  );
+};
 
 const Showcase = props => {
   if ((siteConfig.users || []).length === 0) {
